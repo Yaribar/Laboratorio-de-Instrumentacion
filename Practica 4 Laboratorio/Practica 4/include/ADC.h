@@ -1,5 +1,6 @@
-#ifndef _ADC_h
-#define _ADC_h
+#ifndef _ADC_H
+#define _ADC_H
+#endif
 
 #if defined(ARDUINO) && ARDUINO >= 100
 	#include "arduino.h"
