@@ -1,5 +1,5 @@
-#ifndef _RGB_LED_h
-#define _RGB_LED_h
+#ifndef _RGB_h
+#define _RGB_h
 
 #if defined(ARDUINO) && ARDUINO >= 100
 	#include "arduino.h"
@@ -10,11 +10,11 @@
 #include "PWM_ESP32.h"
 
 
-
-class RGBLED{
+class RGB
+{
 public:
-	RGBLED(uint8_t pin_red, uint8_t pin_green, uint8_t pin_blue);
-	~RGBLED();
+	RGB(uint8_t pin_red, uint8_t pin_green, uint8_t pin_blue);
+	~RGB();
     void setIntstRed(float intensity);
     void setIntstGreen(float intensity);
     void setIntstBlue(float intensity);

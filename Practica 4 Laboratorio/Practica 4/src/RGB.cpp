@@ -1,7 +1,8 @@
-#include "RGB_LED.h"
 #include "PWM_ESP32.h"
+#include "RGB.h"
 
-RGBLED::RGBLED(uint8_t pin_red, uint8_t pin_green, uint8_t pin_blue)
+
+RGB::RGB(uint8_t pin_red, uint8_t pin_green, uint8_t pin_blue)
 {
     _pin_red=pin_red;
     _pin_green=pin_green;
@@ -13,20 +14,20 @@ RGBLED::RGBLED(uint8_t pin_red, uint8_t pin_green, uint8_t pin_blue)
 	
 }
 
-RGBLED::~RGBLED()
+RGB::~RGB()
 {
 
 }
 
-void RGBLED::setIntstRed(float intensity)
+void RGB::setIntstRed(float intensity)
 {
     PWM_Red.setDuty(intensity);
 }
-void RGBLED::setIntstGreen(float intensity)
+void RGB::setIntstGreen(float intensity)
 {
     PWM_Green.setDuty(intensity);
 }
-void RGBLED::setIntstBlue(float intensity)
+void RGB::setIntstBlue(float intensity)
 {
     PWM_Blue.setDuty(intensity);
 }
