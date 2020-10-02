@@ -11,11 +11,13 @@ class AVG{
 public:
     AVG();
     ~AVG();
-    
+    float avg(float dato);
+    void resetAvg();
 
 private:
 
-
+    float _acumulative_avg;
+    uint16_t _count=0;
 };
 
 #endif
