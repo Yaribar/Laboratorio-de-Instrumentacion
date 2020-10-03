@@ -22,6 +22,7 @@ unsigned long start_time;
 void setup() {
   SerialBT.begin("Wano");
   start_time=0;
+  //HOLA IRVING
 }
 
 void loop() {
