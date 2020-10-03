@@ -4,54 +4,35 @@
 #include "Comulative_AVG.h"
 #include "RGB.h"
 
-#define RED 1
-#define GREEN 2
-#define BLUE 3
+#define RED 32
+#define GREEN 33
+#define BLUE 34
 #define RESOLUTION 10
-#define VREF 5
-#define ON_INTENSITY 100
+#define VREF 3.3f
+#define SAMPLING_PERIOD 5
 
-ADCRead ADC_RED(RED, RESOLUTION, VREF);
-ADCRead ADC_GREEN(GREEN, RESOLUTION, VREF);
-ADCRead ADC_BLUE(BLUE, RESOLUTION, VREF);
+ADCRead ADC(RED, RESOLUTION, VREF);
 AVG AVG_Red,AVG_Green,AVG_Blue;
 BluetoothSerial SerialBT;
 RGB RGB1(RED,GREEN,BLUE);
 
 uint8_t on_led_time=5;
-float
+unsigned long start_time;
 
 void setup() {
-
   SerialBT.begin("Wano");
-
+  start_time=0;
 }
 
 void loop() {
 
-
-  switch (x)
-  {
-  case 1:
-    RGB1.setIntstRed(ON_INTENSITY); 
-    RGB1.setIntstRed(0);    
-    break;
-  case 2:
-    RGB1.setIntstGreen(ON_INTENSITY);
-    RGB1.setIntstGreen(0);
-    break;
-  case 3:
-    RGB1.setIntstBlue(ON_INTENSITY);
-    RGB1.setIntstBlue(0);
-    break;
   
-  default:
-    break;
+  if (SerialBT.available()) {
+    on_led_time=SerialBT.readStringUntil("\n");
   }
 
-  if (SerialBT.available()) {
-    SerialBT.printf("%.1f",AVG_Red.avg(ADC_RED.readVoltage()));
-    SerialBT.printf(",%.1f ", AVG_Green.avg(ADC_GREEN.readVoltage()));
-    SerialBT.printf(",%.1f \r\n", AVG_Blue.avg(ADC_BLUE.readVoltage()));
-  }
+  if (millis() - start_time > SAMPLING_PERIOD) {
+		start_time = millis();
+    SerialBT.printf("%.1f,%.1f,%.1f \n",AVG_Red.getCurrentAvg(),AVG_Green.getCurrentAvg(),AVG_Blue.getCurrentAvg());      
+  }  
 }

@@ -18,16 +18,34 @@ RGB::~RGB()
 {
 
 }
+void RGB::setRGB(float intensity_red,float intensity_green, float instensity_blue)
+{
+    PWM_Red.setDuty(intensity_red);
+    PWM_Green.setDuty(intensity_green);
+    PWM_Blue.setDuty(instensity_blue);
+}
 
-void RGB::setIntstRed(float intensity)
-{
-    PWM_Red.setDuty(intensity);
+void RGB::setRGB(byte state){
+    switch (state)
+  {
+  case RED:
+    setRGB(100,0,0);
+    break;
+  case GREEN:
+    setRGB(0,100,0);
+    break;
+  case BLUE:
+    setRGB(0,0,100);
+    break;
+  case WHITE:
+    setRGB(100,100,100);
+    break;
+  case BLACK:
+    setRGB(0,0,0);
+
+    break;  
+  default:
+    break;
+  }
 }
-void RGB::setIntstGreen(float intensity)
-{
-    PWM_Green.setDuty(intensity);
-}
-void RGB::setIntstBlue(float intensity)
-{
-    PWM_Blue.setDuty(intensity);
-}
+
