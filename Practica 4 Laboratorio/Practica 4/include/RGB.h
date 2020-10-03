@@ -8,17 +8,19 @@
 #endif
 
 #include "PWM_ESP32.h"
-
+#define RED 1
+#define GREEN 2
+#define BLUE 3 
+#define WHITE 4
+#define BLACK 5
 
 class RGB
 {
 public:
 	RGB(uint8_t pin_red, uint8_t pin_green, uint8_t pin_blue);
 	~RGB();
-    void setIntstRed(float intensity);
-    void setIntstGreen(float intensity);
-    void setIntstBlue(float intensity);
-
+    void setRGB(float intensity_red,float intensity_green, float instensity_blue);
+    void setRGB(byte state);
     PWM PWM_Red,PWM_Green,PWM_Blue;
 
 private:

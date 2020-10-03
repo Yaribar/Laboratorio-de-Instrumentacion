@@ -13,7 +13,7 @@ public:
     ~AVG();
     float avg(float dato);
     void resetAvg();
-
+    float getCurrentAvg();
 private:
 
     float _acumulative_avg;

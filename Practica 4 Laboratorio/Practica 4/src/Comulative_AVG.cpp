@@ -21,3 +21,8 @@ void AVG::resetAvg()
     _acumulative_avg=0;
     _count=0;
 }
+
+float AVG::getCurrentAvg() //Indicar que pertenece a la clase AVG
+{
+    return _acumulative_avg;
+}
