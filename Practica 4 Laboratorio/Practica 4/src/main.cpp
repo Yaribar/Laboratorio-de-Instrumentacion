@@ -11,7 +11,7 @@
 #define VREF 3.3f
 #define SAMPLING_PERIOD 5
 
-ADCRead ADC(RED, RESOLUTION, VREF);
+ADCRead ADC(36, RESOLUTION, VREF);
 AVG AVG_Red,AVG_Green,AVG_Blue;
 BluetoothSerial SerialBT;
 RGB RGB1(RED,GREEN,BLUE);
@@ -28,11 +28,12 @@ void loop() {
 
   
   if (SerialBT.available()) {
-    on_led_time=SerialBT.readStringUntil("\n");
+    on_led_time=SerialBT.readStringUntil("\n").toInt();
   }
 
   if (millis() - start_time > SAMPLING_PERIOD) {
 		start_time = millis();
-    SerialBT.printf("%.1f,%.1f,%.1f \n",AVG_Red.getCurrentAvg(),AVG_Green.getCurrentAvg(),AVG_Blue.getCurrentAvg());      
+    //SerialBT.printf("%.1f,%.1f,%.1f \n",AVG_Red.getCurrentAvg(),AVG_Green.getCurrentAvg(),AVG_Blue.getCurrentAvg());
+    SerialBT.printf("%.1f,%.1f,%.1f \n",255.1,255.1,255.1);       
   }  
 }
