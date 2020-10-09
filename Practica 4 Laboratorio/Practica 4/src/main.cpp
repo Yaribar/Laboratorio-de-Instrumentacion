@@ -4,9 +4,9 @@
 #include "Comulative_AVG.h"
 #include "RGB.h"
 
-#define RED 32
-#define GREEN 33
-#define BLUE 34
+#define PIN_RED 32
+#define PIN_GREEN 33
+#define PIN_BLUE 34
 #define RESOLUTION 10
 #define VREF 3.3f
 #define SAMPLING_PERIOD 5
@@ -14,26 +14,25 @@
 ADCRead ADC(36, RESOLUTION, VREF);
 AVG AVG_Red,AVG_Green,AVG_Blue;
 BluetoothSerial SerialBT;
-RGB RGB1(RED,GREEN,BLUE);
+RGB RGB1(PIN_RED,PIN_GREEN,PIN_BLUE);
 
-uint8_t on_led_time=5;
+String on_led_time;
 unsigned long start_time;
 
 void setup() {
   SerialBT.begin("Wano");
+  Serial.begin(115200);
   start_time=0;
 }
 
 void loop() {
 
   
-  if (SerialBT.available()) {
-    on_led_time=SerialBT.readStringUntil("\n").toInt();
-  }
-
-  if (millis() - start_time > SAMPLING_PERIOD) {
-		start_time = millis();
+  printf("%.1f,%.1f,%.1f \n",255.1,255.1,255.1);
+  delay(300);
+  //if (millis() - start_time > SAMPLING_PERIOD) {
+		//start_time = millis();
     //SerialBT.printf("%.1f,%.1f,%.1f \n",AVG_Red.getCurrentAvg(),AVG_Green.getCurrentAvg(),AVG_Blue.getCurrentAvg());
-    SerialBT.printf("%.1f,%.1f,%.1f \n",255.1,255.1,255.1);       
-  }  
+    //SerialBT.printf("%.1f,%.1f,%.1f \n",255.1,255.1,255.1);       
+  //}  
 }
