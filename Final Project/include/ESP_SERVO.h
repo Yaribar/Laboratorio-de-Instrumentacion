@@ -15,9 +15,9 @@
 #define MIN_PULSE_WIDTH       800     // the shortest pulse sent to a servo  
 #define MAX_PULSE_WIDTH      2200     // the longest pulse sent to a servo 
 #define DEFAULT_PULSE_WIDTH  1500     // default pulse width when servo is attached
-#define REFRESH_CPS            50
 #define REFRESH_USEC         20000
 #define DEFAULT_TIMER_WIDTH_TICKS 65536
+#define DEFAULT_TIMER_WIDTH 16
 
 class ESPServo
 {

@@ -13,7 +13,7 @@ ESPServo::~ESPServo()
 
 void ESPServo::setup(uint8_t pin, uint8_t channel, bool on_state)
 {
-    CONTROL_PIN.setup(pin, channel,50, 12, on_state);
+    CONTROL_PIN.setup(pin, channel,50, 16, on_state);
 }
 
 void ESPServo::write(uint16_t value)
@@ -41,11 +41,11 @@ void ESPServo::writeMicroseconds(uint16_t value)
         value = usToTicks(value);  // convert to ticks
         _ticks = value;
         // do the actual write
-        CONTROL_PIN.setDuty(_ticks);
-    }
+        CONTROL_PIN.write(_ticks);
+}
 
 
 int ESPServo::usToTicks(int usec)
 {
-    return (int)((float)usec / ((float)REFRESH_USEC / (float)DEFAULT_TIMER_WIDTH_TICKS)*(((float)REFRESH_CPS)/50.0));
+    return (int)((float)usec / ((float)REFRESH_USEC / (float)DEFAULT_TIMER_WIDTH_TICKS));
 }
