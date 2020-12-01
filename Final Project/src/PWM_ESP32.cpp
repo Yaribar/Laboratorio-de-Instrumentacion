@@ -41,6 +41,12 @@ void PWM::setBits(uint32_t bits)
 	ledcWrite(_channel, bits);
 }
 
+void PWM::write(uint32_t duty) 
+{
+	_duty_cycle = duty;
+	ledcWrite(_channel, duty);
+}
+
 void PWM::setFrequency(float frequency)
 {
 	_frequency = frequency;

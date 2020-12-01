@@ -15,6 +15,7 @@ public:
 	void setup(uint8_t pin, uint8_t channel, double frequency, uint8_t bits_resolution, bool on_state);
 	void setDuty(float duty_cycle);
 	void setBits(uint32_t bits);
+	void write(uint32_t duty);
 	void setFrequency(float frequency);
 	void attachPin(uint8_t pin);
 	float getDuty();
