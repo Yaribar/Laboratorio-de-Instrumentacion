@@ -19,10 +19,10 @@ void PWM::setup(uint8_t pin, uint8_t channel, double frequency, uint8_t bits_res
 	pinMode(_pin, OUTPUT);
 	ledcSetup(_channel, _frequency, bits_resolution);
 	ledcAttachPin(_pin, _channel);
-	setPWM(0);
+	setDuty(0);
 }
 
-void PWM::setPWM(float duty_cycle)
+void PWM::setDuty(float duty_cycle)
 {
 	if (duty_cycle > 100)
 		duty_cycle = 100;
@@ -52,4 +52,7 @@ void PWM::attachPin(uint8_t pin)
 	pinMode(pin, OUTPUT);
 	ledcAttachPin(pin, _channel);
 }
-
+float PWM::getDuty()
+{
+	return _duty_cycle;
+}
