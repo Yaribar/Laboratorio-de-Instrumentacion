@@ -21,24 +21,24 @@ HBRIDGE::~HBRIDGE()
 void HBRIDGE::setSpeed(float speed)
 {
 	if (speed > 0) {
-		PWM1.setPWM(0);
-		PWM2.setPWM(abs(speed));
+		PWM1.setDuty(0);
+		PWM2.setDuty(abs(speed));
 	}
 	else if(speed<0){
-		PWM1.setPWM(abs(speed));
-		PWM2.setPWM(0);
+		PWM1.setDuty(abs(speed));
+		PWM2.setDuty(0);
 	}
 }
 
 void HBRIDGE::setStop(bool stop_type)
 {
 	if (stop_type == SHORTBRAKE) {
-		PWM1.setPWM(100);
-		PWM2.setPWM(100);
+		PWM1.setDuty(100);
+		PWM2.setDuty(100);
 	}
 	else {
-		PWM1.setPWM(0);
-		PWM2.setPWM(0);
+		PWM1.setDuty(0);
+		PWM2.setDuty(0);
 	}
 }
 

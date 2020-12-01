@@ -19,21 +19,21 @@ NiMOV::~NiMOV(){
 
 void NiMOV::setSpeed(float raw_speed){
     if (raw_speed > 0) {
-		pwm1.setPWM(0);
-		pwm2.setPWM(abs(raw_speed));
+		pwm1.setDuty(0);
+		pwm2.setDuty(abs(raw_speed));
 	}
 	else if(raw_speed<0){
-		pwm1.setPWM(abs(raw_speed));
-		pwm2.setPWM(0);
+		pwm1.setDuty(abs(raw_speed));
+		pwm2.setDuty(0);
 	}
 }
 void NiMOV::setStop(uint8_t stop_type){
     if (stop_type == SHORTBRAKE) {
-		pwm1.setPWM(100);
-		pwm2.setPWM(100);
+		pwm1.setDuty(100);
+		pwm2.setDuty(100);
 	}
 	else {
-		pwm1.setPWM(0);
-		pwm2.setPWM(0);
+		pwm1.setDuty(0);
+		pwm2.setDuty(0);
 	}
 }
