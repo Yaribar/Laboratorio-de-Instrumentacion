@@ -1,5 +1,5 @@
-#ifndef _ENCODER_h
-#define _ENCODER_h
+#ifndef _IRED_h
+#define _IRED_h
 
 #if defined(ARDUINO) && ARDUINO >= 100
 	#include "arduino.h"
@@ -7,12 +7,13 @@
 	#include "WProgram.h"
 #endif
 
-class ENCODER
-{
+class IRED{
 public:
-ENCODER();
-~ENCODER();
+    IRED(uint8_t pin);
+    ~IRED();
+    bool pulse();
 private:
+uint8_t _pin;
 
 };
 
